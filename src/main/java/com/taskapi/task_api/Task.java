@@ -1,11 +1,25 @@
 package com.taskapi.task_api;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tasks")
 public class Task {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(nullable = false)
     private String title;
+    
     private boolean completed;
 
-    // Constructor
+    // Default constructor (required by JPA)
+    public Task() {
+    }
+
+    // Constructor with parameters
     public Task(Long id, String title, boolean completed) {
         this.id = id;
         this.title = title;
